@@ -4,6 +4,7 @@ import Hero from '../../components/hero';
 import { useParams } from 'react-router-dom';
 
 // Import useParams
+import { Navigate } from 'react-router-dom';
 // Import Navigate
 
 const PetDetailsPage = () => {
@@ -11,7 +12,7 @@ const PetDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const {id} = useParams(); // <--- Update me!
-
+  
   useEffect(() => {
     async function getPetsData() {
       try {
@@ -34,6 +35,7 @@ const PetDetailsPage = () => {
       ) : error ? (
         <div>
           {/* Redirect to /pet-details-not-found if there was an error! */}
+          <Navigate to="/pet-details-not-found" />
         </div>
       ) : (
         <main>
